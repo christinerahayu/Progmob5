@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/bad_script</item>
+        <item>@font/cantata_one</item>
+        <item>@font/chelsea_market</item>
+        <item>@font/goudy_bookletter_1911</item>
+        <item>@font/linden_hill</item>
+        <item>@font/ubuntu_bold</item>
+    </array>
+</resources>

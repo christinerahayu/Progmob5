@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#5e3ec1</color>
+    <color name="colorPrimaryDark">#5e3ec1</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="hitam">#FF000000</color>
+    <color name="putih">#FFFFFFFF</color>
+    <color name="login">#FFCCCCFF</color>
+    <color name="register">#FF9999FF</color>
+    <color name="editText">#d1cfe7</color>
+    <color name="BgRegister">#b0a3c8</color>
+    b0a3c8
+
 </resources>

@@ -14,7 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE session(id integer PRIMARY KEY, login text)");
-        db.execSQL("CREATE TABLE user(id integer PRIMARY KEY AUTOINCREMENT, username text, password text)");
+        db.execSQL("CREATE TABLE user(id integer PRIMARY KEY AUTOINCREMENT, username text, nama text, jkelamin text, tglahir text, tlp text, email text, password text)");
         db.execSQL("INSERT INTO session(id, login) VALUES(1, 'kosong')");
     }
 
@@ -52,10 +52,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //insert user
-    public Boolean insertUser(String username, String password) {
+    public Boolean insertUser (String username, String Nama, String JKelamin, String tglahir, String Tlp, String Alamat, String Email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", username);
+        contentValues.put("nama", Nama);
+        contentValues.put("jkelamin", JKelamin);
+        contentValues.put("username", tglahir);
+        contentValues.put("username", Tlp);
+        contentValues.put("username", Alamat);
+        contentValues.put("username", Email);
         contentValues.put("password", password);
         long insert = db.insert("user", null, contentValues);
         if (insert == -1) {
@@ -77,5 +83,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
-}
 
+}
