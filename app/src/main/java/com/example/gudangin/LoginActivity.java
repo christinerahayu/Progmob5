@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                     Boolean updateSession = db.upgradeSession("ada", 1);
                     if (updateSession == true) {
                         Toast.makeText(getApplicationContext(), "Berhasil Masuk", Toast.LENGTH_SHORT).show();
-                        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent mainIntent = new Intent(LoginActivity.this, MainnActivity.class);
                         startActivity(mainIntent);
                         finish();
                     }

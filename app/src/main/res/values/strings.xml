@@ -1,7 +1,17 @@
 <resources>
     <string name="app_name">GUDANGIN</string>
+
+    <string name="action_settings">Settings</string>
+
     <string-array name="jenis_kelamin">
         <item>Laki-laki</item>
         <item>Perempuan</item>
     </string-array>
+
+    <string-array name="jenis_barang">
+        <item>Makanan</item>
+        <item>Minuman</item>
+    </string-array>
+    <string name="title_activity_content_main">content_main</string>
+    <string name="title_activity_mainn">MainnActivity</string>
 </resources>

@@ -1,13 +1,15 @@
+/*
 package com.example.gudangin;
 
 import android.content.Intent;
-//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+//import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     DatabaseHelper db;
@@ -16,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mainn);
 
         db = new DatabaseHelper(this);
 
-        logout = (Button)findViewById(R.id.btn_logout);
+        //logout = (Button)findViewById(R.id.btn_logout);
 
 
         Boolean checkSession = db.checkSession("ada");
@@ -45,3 +47,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
+*/
