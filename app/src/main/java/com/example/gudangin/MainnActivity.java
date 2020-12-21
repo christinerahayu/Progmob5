@@ -10,6 +10,7 @@ import com.example.gudangin.CostumCursorAdapter;
 import com.example.gudangin.EditActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainnActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    /*private DrawerLayout drawer*/
     Button logout;
     ListView listView;
     DatabaseHelper helper;
@@ -37,7 +39,12 @@ public class MainnActivity extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainn);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar1 = findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
+
+       /* drawer = findViweById(R.id.drawer_layout);
+
+        ActionBarDrawerToggle toogle = new ActionBarDrawerToggle(this, drawer, toolbar1 )*/
 
         //DB Login
         helper = new DatabaseHelper(this);

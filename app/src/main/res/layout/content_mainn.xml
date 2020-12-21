@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:drawSelectorOnTop="true"
+        android:background="@color/BgRegister"
         android:layout_margin="7dp">
     </ListView>
 
