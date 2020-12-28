@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import androidx.annotation.Nullable;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String database_name = "db_gudangIn";
     public static final String table_name = "tabel_barang";
@@ -24,10 +26,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db = getWritableDatabase();
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE session(id integer PRIMARY KEY, login text)");
-        db.execSQL("CREATE TABLE user(id integer PRIMARY KEY AUTOINCREMENT, username text, password text)");
+        db.execSQL("CREATE TABLE pengguna(id integer PRIMARY KEY AUTOINCREMENT, username text, password text, namalengkap text, alamat text, telp text)");
+
         //db.execSQL("CREATE TABLE user(id integer PRIMARY KEY AUTOINCREMENT, username text, nama text, jkelamin text, tglahir text, tlp text, alamat text, email text, password text)");
         db.execSQL("INSERT INTO session(id, login) VALUES(1, 'kosong')");
         String query = "CREATE TABLE " + table_name + "(" + row_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -40,7 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + table_name);
         db.execSQL("DROP TABLE IF EXISTS session");
-        db.execSQL("DROP TABLE IF EXISTS user");
+        db.execSQL("DROP TABLE IF EXISTS pengguna");
         onCreate(db);
     }
     //Get All SQLite Data
@@ -98,7 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //check login
     public Boolean checkLogin(String username, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM user WHERE username = ? AND password = ?", new String[]{username, password});
+        Cursor cursor = db.rawQuery("SELECT * FROM pengguna WHERE username = ? AND password = ?", new String[]{username, password});
         if (cursor.getCount() > 0) {
             return true;
         }
@@ -107,33 +111,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
     //insert user
-    public Boolean insertUser(String username, String password) {
+    public Boolean insertPengguna(String username, String password, String namalengkap, String alamat, String telp) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", username);
         contentValues.put("password", password);
-        long insert = db.insert("user", null, contentValues);
-        if (insert == -1) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-/*
-
-    public Boolean insertUser(String strUsername, String nama, String jkelamin, String tglahir, String tlp, String alamat, String email,String strPassword) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("username", strUsername);
-        contentValues.put("nama", nama);
-        contentValues.put("jkelamin", jkelamin);
-        contentValues.put("tglahir", tglahir);
-        contentValues.put("tlp", tlp);
+        contentValues.put("namalengkap", namalengkap);
         contentValues.put("alamat", alamat);
-        contentValues.put("email", email);
-        contentValues.put("password", strPassword);
-        long insert = db.insert("user", null, contentValues);
+        contentValues.put("telp", telp);
+        long insert = db.insert("pengguna", null, contentValues);
         if (insert == -1) {
             return false;
         }
@@ -141,6 +127,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-*/
 
 }

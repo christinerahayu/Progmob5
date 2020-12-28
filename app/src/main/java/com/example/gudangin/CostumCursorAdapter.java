@@ -27,6 +27,7 @@ public class CostumCursorAdapter extends CursorAdapter {
         MyHolder holder = new MyHolder();
         holder.ListIDproduk = (TextView)v.findViewById(R.id.listIDbarang);
         holder.ListNamaproduk = (TextView)v.findViewById(R.id.listNamabarang);
+        holder.Listjumlah = (TextView)v.findViewById(R.id.listJumlah);
         v.setTag(holder);
         return v;
     }
@@ -37,11 +38,13 @@ public class CostumCursorAdapter extends CursorAdapter {
 
         holder.ListIDproduk.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.row_id)));
         holder.ListNamaproduk.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.row_namaBarang)));
+        holder.Listjumlah.setText("Stok Barang : " + cursor.getString(cursor.getColumnIndex(DatabaseHelper.row_jumlah)));
     }
 
     class MyHolder{
         TextView ListIDproduk;
         TextView ListNamaproduk;
+        TextView Listjumlah;
     }
 }
 

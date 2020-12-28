@@ -5,17 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainnActivity"
-    tools:showIn="@layout/activity_mainn"
-    android:orientation="vertical">
-
+    tools:showIn="@layout/activity_mainn">
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
     <ListView
-        android:id="@+id/list_data"
+        android:id="@+id/List_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:drawSelectorOnTop="true"
         android:background="@color/BgRegister"
-        android:layout_margin="7dp">
+        >
     </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

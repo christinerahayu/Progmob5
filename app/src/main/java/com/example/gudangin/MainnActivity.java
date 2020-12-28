@@ -9,12 +9,18 @@ import com.example.gudangin.AddActivity;
 import com.example.gudangin.CostumCursorAdapter;
 import com.example.gudangin.EditActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,8 +31,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainnActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    /*private DrawerLayout drawer*/
+public class MainnActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener {
+    private DrawerLayout drawer;
     Button logout;
     ListView listView;
     DatabaseHelper helper;
@@ -39,12 +45,17 @@ public class MainnActivity extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainn);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        Toolbar toolbar1 = findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
+        drawer = findViewById(R.id.drawer_layout);
 
-       /* drawer = findViweById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
 
-        ActionBarDrawerToggle toogle = new ActionBarDrawerToggle(this, drawer, toolbar1 )*/
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        toggle.syncState();
+        getSupportActionBar().setTitle("Dashboard");
 
         //DB Login
         helper = new DatabaseHelper(this);
@@ -59,7 +70,7 @@ public class MainnActivity extends AppCompatActivity implements AdapterView.OnIt
 
         //DB barang
         helper = new DatabaseHelper(this);
-        listView = (ListView)findViewById(R.id.list_data);
+        listView = (ListView)findViewById(R.id.List_data);
         listView.setOnItemClickListener(this);
 
         //ke Halaman Login
@@ -71,9 +82,17 @@ public class MainnActivity extends AppCompatActivity implements AdapterView.OnIt
         }
     }
     @Override
+    public void onBackPressed(){
+        if(drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else {
+            super.onBackPressed();
+        }
+    }
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        //getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -83,11 +102,6 @@ public class MainnActivity extends AppCompatActivity implements AdapterView.OnIt
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -116,11 +130,15 @@ public class MainnActivity extends AppCompatActivity implements AdapterView.OnIt
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
                     case 0:
-                        final AlertDialog.Builder viewData = new AlertDialog.Builder(MainnActivity.this);
+                        Intent iddata = new Intent(MainnActivity.this, ShowDetailActivity.class);
+                        iddata.putExtra(DatabaseHelper.row_id, id);
+                        startActivity(iddata);
+
+                        /*final AlertDialog.Builder viewData = new AlertDialog.Builder(MainnActivity.this);
                         inflater = getLayoutInflater();
                         dialogView = inflater.inflate(R.layout.view_data, null);
                         viewData.setView(dialogView);
-                        viewData.setTitle("----------------Lihat Data Barang--------------");
+                        viewData.setTitle("--------------Lihat Data Barang------------");
 
                         kodeBarang = (TextView)dialogView.findViewById(R.id.KodeBarang);
                         namaBarang = (TextView)dialogView.findViewById(R.id.NamaBarang);
@@ -131,10 +149,11 @@ public class MainnActivity extends AppCompatActivity implements AdapterView.OnIt
 
                         kodeBarang.setText("     Kode Barang                    : " + cur.getString(cur.getColumnIndex(DatabaseHelper.row_kodeBarang)));
                         jb.setText("     Jenis Barang                    : " + cur.getString(cur.getColumnIndex(DatabaseHelper.row_jb)));
-                        namaBarang.setText("     Nama Barang                 : " + cur.getString(cur.getColumnIndex(DatabaseHelper.row_namaBarang)));
-                        harga.setText("     Harga                                 : Rp" + cur.getString(cur.getColumnIndex(DatabaseHelper.row_harga)));
-                        jumlah.setText("     Jumlah                            : " + cur.getString(cur.getColumnIndex(DatabaseHelper.row_jumlah)));
-                        tanggalExp.setText("     Tanggal Kadaluarsa    : " + cur.getString(cur.getColumnIndex(DatabaseHelper.row_tanggalExp)));
+                        namaBarang.setText("     Nama Barang                  : " + cur.getString(cur.getColumnIndex(DatabaseHelper.row_namaBarang)));
+                        harga.setText("     Harga                                : Rp" + cur.getString(cur.getColumnIndex(DatabaseHelper.row_harga)));
+                        jumlah.setText("     Jumlah                             : " + cur.getString(cur.getColumnIndex(DatabaseHelper.row_jumlah)));
+                        tanggalExp.setText("     Tanggal Kadaluarsa      : " + cur.getString(cur.getColumnIndex(DatabaseHelper.row_tanggalExp)));
+
 
                         viewData.setPositiveButton("KEMBALI", new DialogInterface.OnClickListener() {
                             @Override
@@ -142,7 +161,7 @@ public class MainnActivity extends AppCompatActivity implements AdapterView.OnIt
                                 dialog.dismiss();
                             }
                         });
-                        viewData.show();
+                        viewData.show();*/
                 }
                 switch (which){
                     case 1:
@@ -183,6 +202,20 @@ public class MainnActivity extends AppCompatActivity implements AdapterView.OnIt
     protected void onResume() {
         super.onResume();
         setListView();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem Item) {
+        int id = Item.getItemId();
+         if (id == R.id.nav_account){
+            startActivity(new Intent(MainnActivity.this, AccountActivity.class));
+        }else if (id == R.id.nav_logout){
+             Toast.makeText(MainnActivity.this,"Log Out Success !", Toast.LENGTH_SHORT).show();
+             Intent intent = new Intent(MainnActivity.this, LoginActivity.class);
+             startActivity(intent);
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
 }

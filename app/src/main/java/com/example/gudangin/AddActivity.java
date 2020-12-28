@@ -146,8 +146,7 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        Toolbar toolbar = findViewById(R.id.toolbarAdd);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Tambah Data Baru");
 
         helper = new DatabaseHelper(this);
 

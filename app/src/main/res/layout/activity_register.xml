@@ -47,7 +47,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:ignore="MissingConstraints" />
-<!--
+
     <EditText
         android:id="@+id/namaLengkap"
         android:layout_width="350dp"
@@ -62,52 +62,6 @@
         app:layout_constraintTop_toBottomOf="@+id/username"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/jnsKelamin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Jenis Kelamin"
-        android:textStyle="bold"
-        android:textColor="@color/hitam"
-        app:layout_constraintStart_toStartOf="@+id/spJK_Add"
-        app:layout_constraintTop_toBottomOf="@+id/namaLengkap"
-        tools:ignore="MissingConstraints" />
-
-    <Spinner
-        android:id="@+id/spJK_Add"
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:entries="@array/jenis_kelamin"
-        android:popupBackground="@color/BgRegister"
-        android:textColor="@color/hitam"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jnsKelamin"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/tglLahir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tanggal Lahir"
-        android:textColor="@color/hitam"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/txTglLahir_Add"
-        app:layout_constraintTop_toBottomOf="@+id/spJK_Add"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/txTglLahir_Add"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:focusable="false"
-        android:inputType="date"
-        android:textColor="@color/hitam"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tglLahir"
-        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/tlp"
@@ -119,7 +73,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txTglLahir_Add"
+        app:layout_constraintTop_toBottomOf="@+id/namaLengkap"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
@@ -136,20 +90,6 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/email"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="352dp"
-        android:hint="E - Mail"
-        android:textColor="@color/hitam"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/alamat"
-        app:layout_constraintVertical_bias="0.0" />-->
-
-    <EditText
         android:id="@+id/edtText_passwordRegist"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -158,7 +98,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/alamat"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -167,7 +107,7 @@
         android:layout_height="wrap_content"
         android:hint="Password confirmation"
         android:inputType="textPassword"
-        android:textColor="@color/register"
+        android:textColor="@color/hitam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtText_passwordRegist"

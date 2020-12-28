@@ -26,6 +26,6 @@
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:textSize="14dp"
-        android:text="kelompok5"/>
+        android:text="progmoblanjut"/>
 
 </LinearLayout>
